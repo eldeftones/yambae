@@ -1,5 +1,5 @@
 @extends('backend.master')
 
 @section('content')
-    <h1>ESPACE YAMBAE</h1>
+    <h1>Factures</h1>
 @endsection
