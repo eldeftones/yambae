@@ -8,6 +8,7 @@ class Student extends Model
 {
      protected $table = 'students';
 
+
      public function fromJson($data, $asObject = false) {
 
          $this->gender = $data['gender'];
@@ -15,6 +16,7 @@ class Student extends Model
          $this->lastname = $data['lastname'];
          $this->created_at = $data['created_at'];
      }
+
 
      public function toJson($options = 0) {
 

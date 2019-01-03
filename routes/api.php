@@ -18,7 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /**
- * STUDENT
+ * STUDENTS
  */
-Route::get('/students', 'Api\\StudentController@getStudents');
-Route::post('/student/new', 'Api\\StudentController@createStudent');
+Route::get('/students',         'Api\\StudentController@getStudents');
+Route::post('/student/new',     'Api\\StudentController@createStudent');
+
+/**
+ * BILLS
+ */
+Route::post('/bill/new',     'Api\\BillController@createBill');

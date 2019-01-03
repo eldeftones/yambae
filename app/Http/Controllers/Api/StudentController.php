@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Student;
 use App\Http\Requests\Api\CreateNewStudentRequest;
+use App\Models\Student;
 
 class StudentController extends Controller {
 

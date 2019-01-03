@@ -23,6 +23,9 @@ Auth::routes();
 // HOME
 Route::get('/home', 'HomeController@index')->name('home');
 
-// USERS
-Route::get('/list-students',    'StudentController@listStudents')->name('list_students');
-Route::get('/new-student',      'StudentController@newStudent')->name('new_student');
+// STUDENTS
+Route::get('/list-students',    'Backoffice\\StudentController@listStudents')->name('list_students');
+Route::get('/new-student',      'Backoffice\\StudentController@newStudent')->name('new_student');
+
+// BILLS
+Route::get('/student/{id}/new-bill',    'Backoffice\\BillController@newBill')->name('new_bill');

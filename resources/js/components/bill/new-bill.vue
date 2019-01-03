@@ -1,5 +1,5 @@
 <template>
-    <div class="new-student">
+    <div class="new-bill">
         <div class="row justify-content-center">
             <div class="col-md-8">
 
@@ -8,49 +8,49 @@
                     <div class="alert alert-success" role="alert">
                         <strong>Yeah !</strong> {{ message }}
                     </div>
-                    <a href="/new-student" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Créer un(e) nouvel(le) élève</a>
+                    <a :href="'/student/'+studentId+'/new-bill'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Créer une nouvelle facture pour cet élève</a>
                     <a href="/list-students" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Voir la liste des élèves</a>
                 </div>
 
-                <!-- NEW STUDENT FORM -->
+                <!-- NEW BILL FORM -->
                 <div v-else class="card card-default">
-                    <div class="card-header">Nouvel(le) élève</div>
+                    <div class="card-header">Nouvelle facture</div>
 
                     <div class="card-body">
 
-                        <!-- GENDER -->
+                        <!-- PRODUCT TYPE -->
                         <div class="form-group row">
-                            <label class="col-md-2 control-label">Sexe</label>
+                            <label class="col-md-2 control-label">Produit</label>
                             <div class="col-md-2">
-                                <select class="form-control input-md" v-model="student.gender">
-                                    <option value="male">Homme</option>
-                                    <option value="female">Femme</option>
+                                <select class="form-control input-md" v-model="bill.product_id">
+                                    <option value="1">Session</option>
+                                    <option value="2">Atelier</option>
                                 </select>
                             </div>
                         </div>
 
-                        <!-- FIRSTNAME -->
+                        <!-- PRICE -->
                         <div class="form-group row">
-                            <label class="col-md-2 control-label" for="firstname">Prénom</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control" v-model="student.firstname" id="firstname" />
+                            <label class="col-md-2 control-label" for="price">Prix</label>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" v-model="bill.price" id="price" />
                             </div>
                         </div>
 
-                        <!-- LASTNAME -->
+                        <!-- COMMENT -->
                         <div class="form-group row">
-                            <label class="col-md-2 control-label" for="lastname">Nom</label>
+                            <label class="col-md-2 control-label" for="comment">Commentaire</label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control" v-model="student.lastname" id="lastname" />
+                                <input type="text" class="form-control" v-model="bill.comment" id="comment" />
                             </div>
                         </div>
 
                         <!-- ENTRY DATE -->
                         <div class="form-group row">
-                            <label class="col-md-2 control-label">Date d'entrée</label>
+                            <label class="col-md-2 control-label">Date</label>
                             <div class="col-md-10">
                                  <date-picker
-                                    v-model="student.created_at"
+                                    v-model="bill.created_at"
                                     lang="fr"
                                     type="date"
                                 />
@@ -60,7 +60,7 @@
                         <!-- SAVE BUTTON -->
                         <div class="form-group row">
                             <div class="col-md-10">
-                                <button type="button" class="btn btn-success" @click="addStudent">Créer</button>
+                                <button type="button" class="btn btn-success" @click="createBill">Créer</button>
                             </div>
                         </div>
 
@@ -77,16 +77,19 @@ import moment from 'moment'
 
 export default {
     props: [
+        'studentId',
     ],
 
     data() {
         return {
             message: '',
             errors: '',
-            student: {
-                gender: 'male',
-                firstname: '',
-                lastname: '',
+            bill: {
+                student_id: this.studentId,
+                product_id: '',
+                comment: '',
+                price: '',
+                refunded: false,
                 created_at: new Date(),
             },
         }
@@ -98,11 +101,11 @@ export default {
 
     methods: {
 
-        addStudent() {
+        createBill() {
 
-            this.student.created_at = moment(this.student.created_at).format('YYYY-MM-DD')
+            this.bill.created_at = moment(this.bill.created_at).format('YYYY-MM-DD')
 
-            axios.post(`/api/student/new`, this.student).then(results => {
+            axios.post(`/api/bill/new`, this.bill).then(results => {
                 this.message = results.data.message
             }, error => {
                 this.errors = results.data.message
@@ -115,7 +118,7 @@ export default {
 </script>
 
 <style lang="scss">
-.new-student {
+.new-bill {
 
 }
 </style>

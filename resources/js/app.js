@@ -32,7 +32,7 @@ Vue.component('moment', require('moment'));
  */
 Vue.component('list-students', require('./components/student/list-students.vue').default);
 Vue.component('new-student', require('./components/student/new-student.vue').default);
-Vue.component('new-billing', require('./components/billing/new-billing.vue').default);
+Vue.component('new-bill', require('./components/bill/new-bill.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

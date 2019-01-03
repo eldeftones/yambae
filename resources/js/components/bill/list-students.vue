@@ -21,8 +21,8 @@
                             <td>{{ student.lastname }}</td>
                             <td>{{ student.created_at }}</td>
                             <td>
-                                <a href="/list-bills" class="btn btn-success btn-sm active" role="button" aria-pressed="true">Liste des factures</a>
-                                <a :href="'/student/'+student.id+'/new-bill'" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Ajouter une facture</a>
+                                <a href="/add-bill" class="btn btn-success btn-sm active" role="button" aria-pressed="true">Liste des factures</a>
+                                <a href="/list-bills" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Ajouter une facture</a>
                             </td>
                         </tr>
                   </tbody>
