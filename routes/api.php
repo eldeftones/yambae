@@ -17,13 +17,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/**
- * STUDENTS
- */
-Route::get('/students',         'Api\\StudentController@getStudents');
-Route::post('/student/new',     'Api\\StudentController@createStudent');
+// STUDENTS
+Route::get('/students',                     'Api\\StudentController@getStudents');
+Route::post('/student/new',                 'Api\\StudentController@createStudent');
 
-/**
- * BILLS
- */
-Route::post('/bill/new',     'Api\\BillController@createBill');
+// PRODUCTS
+Route::get('/products',                     'Api\\ProductController@getProducts');
+Route::post('/product/new',                 'Api\\ProductController@createProduct');
+
+// BILLS
+Route::get('/student/{id}/bills',           'Api\\BillController@getStudentBills');
+Route::post('/bill/new',                    'Api\\BillController@createBill');
+Route::get('/bills/total',                  'Api\\BillController@getTotalBills');

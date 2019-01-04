@@ -20,19 +20,23 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-/**
- * GENERIC
- */
+// GENERIC
 Vue.component('date-picker', require('vue2-datepicker').default);
 Vue.component('toggle-button', require('vue-js-toggle-button/src/Button.vue').default);
 Vue.component('moment', require('moment'));
 
-/**
- * YAMBAE
- */
+// STUDENTS
 Vue.component('list-students', require('./components/student/list-students.vue').default);
 Vue.component('new-student', require('./components/student/new-student.vue').default);
+
+// PRODUCTS
+Vue.component('list-products', require('./components/product/list-products.vue').default);
+Vue.component('new-product', require('./components/product/new-product.vue').default);
+
+// BILLS
 Vue.component('new-bill', require('./components/bill/new-bill.vue').default);
+Vue.component('list-bills', require('./components/bill/list-bills.vue').default);
+Vue.component('bills-total', require('./components/bill/bills-total.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

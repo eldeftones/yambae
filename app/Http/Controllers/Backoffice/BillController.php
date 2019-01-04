@@ -8,26 +8,32 @@ use App\Models\Student;
 
 class BillController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function listBills()
+
+    public function listBills($studentId)
     {
-        return view('backend.bill.list');
+        $student = Student::find($studentId);
+        if (!$student) {
+            // TODO
+        }
+
+        return view('backend.bill.list')
+            ->with([
+                'studentId' => $studentId,
+            ]);
     }
 
-    public function newBill($id)
+
+    public function newBill($studentId)
     {
-        $student = Student::find($id);
+        $student = Student::find($studentId);
         if (!$student) {
-            abort();
+            // TODO
         }
 
         return view('backend.bill.new')
@@ -35,4 +41,11 @@ class BillController extends Controller
                 'studentId' => $student->id,
             ]);
     }
+
+
+    public function total()
+    {
+        return view('backend.bill.total');
+    }
+
 }

@@ -7,19 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $table = 'products';
-    protected $timestamps = false;
+    public $timestamps = false;
 
 
-    public function fromJson($data, $asObject = false) {
-
+    public function fromJson($data, $asObject = false)
+    {
         $this->label = $data['label'];
         $this->price = $data['price'];
         $this->description = $data['description'];
     }
 
 
-    public function toJson($options = 0) {
-
+    public function toJson($options = 0)
+    {
         return [
             'id' => $this->id,
             'label' => $this->label,
@@ -27,4 +27,5 @@ class Product extends Model
             'description' => $this->description,
         ];
     }
+
 }

@@ -9,8 +9,20 @@ class Bill extends Model
     protected $table = 'bills';
 
 
-    public function fromJson($data, $asObject = false) {
+    public function product()
+    {
+        return $this->hasOne('App\Models\Product', 'id', 'product_id');
+    }
 
+
+    public function student()
+    {
+        return $this->hasOne('App\Models\Student', 'id', 'student_id');
+    }
+
+
+    public function fromJson($data, $asObject = false)
+    {
         $this->product_id = $data['product_id'];
         $this->student_id = $data['student_id'];
         $this->price = $data['price'];
@@ -20,12 +32,13 @@ class Bill extends Model
     }
 
 
-    public function toJson($options = 0) {
-
+    public function toJson($options = 0)
+    {
         return [
             'id' => $this->id,
             'product_id' => $this->product_id,
-            'student_id' => $this->student_id,
+            'product_label' => $this->product->label,
+            'student' => $this->student->toJson(),
             'price' => $this->price,
             'refunded' => $this->refunded,
             'comment' => $this->comment,

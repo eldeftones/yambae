@@ -3,6 +3,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
+                <h1>Nouvel(le) élève</h1>
+
                 <!-- MESSAGES -->
                 <div v-if="message">
                     <div class="alert alert-success" role="alert">
@@ -116,6 +118,8 @@ export default {
 
 <style lang="scss">
 .new-student {
-
+    h1 {
+        margin: 30px 0 50px 0;
+    }
 }
 </style>

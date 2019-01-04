@@ -9,16 +9,16 @@ use App\Models\Student;
 class StudentController extends Controller {
 
 
-    public function getStudents() {
-
+    public function getStudents()
+    {
         $students = Student::all();
 
         return response()->json($students->map->toJson());
     }
 
 
-    public function createStudent(CreateNewStudentRequest $request) {
-
+    public function createStudent(CreateNewStudentRequest $request)
+    {
         $student = new Student;
         $student->fromJson(request()->all());
         $student->save();

@@ -3,6 +3,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
+                <h1>Nouvelle facture</h1>
+
                 <!-- MESSAGES -->
                 <div v-if="message">
                     <div class="alert alert-success" role="alert">
@@ -21,10 +23,9 @@
                         <!-- PRODUCT TYPE -->
                         <div class="form-group row">
                             <label class="col-md-2 control-label">Produit</label>
-                            <div class="col-md-2">
-                                <select class="form-control input-md" v-model="bill.product_id">
-                                    <option value="1">Session</option>
-                                    <option value="2">Atelier</option>
+                            <div class="col-md-4">
+                                <select class="form-control input-md" v-model="bill.product_id" @change="updatePrice">
+                                    <option v-for="product in products" :value="product.id">{{ product.label + ' (' + product.price + '$)' }}</option>
                                 </select>
                             </div>
                         </div>
@@ -33,7 +34,12 @@
                         <div class="form-group row">
                             <label class="col-md-2 control-label" for="price">Prix</label>
                             <div class="col-md-2">
-                                <input type="text" class="form-control" v-model="bill.price" id="price" />
+                                <div class="input-group">
+                                    <input type="text" class="form-control" v-model="bill.price" id="price" />
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -84,6 +90,7 @@ export default {
         return {
             message: '',
             errors: '',
+            products: null,
             bill: {
                 student_id: this.studentId,
                 product_id: '',
@@ -95,11 +102,28 @@ export default {
         }
     },
 
+    created() {
+        this.fetchProducts()
+    },
+
     computed: {
 
     },
 
     methods: {
+
+        fetchProducts() {
+
+            axios.get(`/api/products`).then(results => {
+                this.products = results.data
+            }, error => {
+                console.error(error)
+            })
+        },
+
+        updatePrice() {
+            this.bill.price = _.find(this.products, {'id': this.bill.product_id}).price
+        },
 
         createBill() {
 
@@ -119,6 +143,8 @@ export default {
 
 <style lang="scss">
 .new-bill {
-
+    h1 {
+        margin: 30px 0 50px 0;
+    }
 }
 </style>
