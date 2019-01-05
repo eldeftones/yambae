@@ -10,8 +10,11 @@
                     <div class="alert alert-success" role="alert">
                         <strong>Yeah !</strong> {{ message }}
                     </div>
-                    <a href="/new-student" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Créer un(e) nouvel(le) élève</a>
-                    <a href="/list-students" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Voir la liste des élèves</a>
+                    <a href="/new-student" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+                        <span class="oi oi-plus"></span>
+                        Nouvel(le) élève
+                    </a>
+                    <a href="/list-students" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Liste des élèves</a>
                 </div>
 
                 <!-- NEW STUDENT FORM -->
@@ -101,7 +104,6 @@ export default {
     methods: {
 
         addStudent() {
-
             this.student.created_at = moment(this.student.created_at).format('YYYY-MM-DD')
 
             axios.post(`/api/student/new`, this.student).then(results => {

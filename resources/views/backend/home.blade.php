@@ -12,8 +12,9 @@
                 </div>
 
                 <div class="card-body">
-                    <a href="/list-products" class="btn btn-success btn-md active" role="button" aria-pressed="true">Voir la liste des produits</a>
-                    <a href="/new-product" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Créer un nouveau produit</a>
+                    <a href="/list-products" class="btn btn-success btn-md active" role="button" aria-pressed="true">Liste des produits</a>
+                    <a href="/new-product" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Nouveau produit</a>
+                    <a href="/list-product-categories" class="btn btn-warning btn-md active" role="button" aria-pressed="true">Liste des catégories</a>
                 </div>
             </div>
 
@@ -26,8 +27,8 @@
                 </div>
 
                 <div class="card-body">
-                    <a href="/list-students" class="btn btn-success btn-md active" role="button" aria-pressed="true">Voir la liste des élèves</a>
-                    <a href="/new-student" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Créer un(e) nouvel(le) élève</a>
+                    <a href="/list-students" class="btn btn-success btn-md active" role="button" aria-pressed="true">Liste des élèves</a>
+                    <a href="/new-student" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Nouvel(le) élève</a>
                 </div>
             </div>
 

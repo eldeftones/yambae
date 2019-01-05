@@ -4,10 +4,10 @@
             <div class="col-md-8">
 
                 <h1>
-                    Liste des produits
+                    Produits
                     <a href="/new-product" class="btn btn-primary btn-title btn-md active" role="button" aria-pressed="true">
                         <span class="oi oi-plus"></span>
-                        Créer un nouveau produit
+                        Nouveau produit
                     </a>
                 </h1>
 
@@ -23,6 +23,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Nom</th>
                             <th scope="col">Prix</th>
+                            <th scope="col">Catégorie</th>
                             <th scope="col">Description</th>
                         </tr>
                     </thead>
@@ -31,6 +32,7 @@
                             <th scope="row">{{ product.id }}</th>
                             <td>{{ product.label }}</td>
                             <td>{{ product.price }}</td>
+                            <td>{{ product.category.label }}</td>
                             <td>{{ product.description }}</td>
                         </tr>
                   </tbody>
@@ -65,7 +67,6 @@ export default {
     methods: {
 
         fetchProducts() {
-
             axios.get(`/api/products`).then(results => {
                 this.products = results.data
             }, error => {

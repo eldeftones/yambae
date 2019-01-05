@@ -24,6 +24,7 @@ Route::post('/student/new',                 'Api\\StudentController@createStuden
 // PRODUCTS
 Route::get('/products',                     'Api\\ProductController@getProducts');
 Route::post('/product/new',                 'Api\\ProductController@createProduct');
+Route::get('/categories',                   'Api\\ProductController@listProductCategories');
 
 // BILLS
 Route::get('/student/{id}/bills',           'Api\\BillController@getStudentBills');

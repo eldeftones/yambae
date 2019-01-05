@@ -10,11 +10,18 @@ class Product extends Model
     public $timestamps = false;
 
 
+    public function category()
+    {
+        return $this->hasOne('App\Models\Category', 'id', 'category_id');
+    }
+
+
     public function fromJson($data, $asObject = false)
     {
         $this->label = $data['label'];
         $this->price = $data['price'];
         $this->description = $data['description'];
+        $this->category_id = $data['category_id'];
     }
 
 
@@ -25,6 +32,7 @@ class Product extends Model
             'label' => $this->label,
             'price' => $this->price,
             'description' => $this->description,
+            'category' => $this->category->toJson(),
         ];
     }
 

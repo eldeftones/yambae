@@ -10,8 +10,11 @@
                     <div class="alert alert-success" role="alert">
                         <strong>Yeah !</strong> {{ message }}
                     </div>
-                    <a href="/new-product" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Créer un nouveau produit</a>
-                    <a href="/list-products" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Voir la liste des produits</a>
+                    <a href="/new-product" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+                        <span class="oi oi-plus"></span>
+                        Nouveau produit
+                    </a>
+                    <a href="/list-products" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Liste des produits</a>
                 </div>
 
                 <!-- NEW PRODUCT FORM -->
@@ -25,6 +28,17 @@
                             <label class="col-md-2 control-label" for="label">Nom</label>
                             <div class="col-md-10">
                                 <input type="text" class="form-control" v-model="product.label" id="label" />
+                            </div>
+                        </div>
+
+                        <!-- CATEGORY -->
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label">Catégorie</label>
+                            <div class="col-md-4">
+                                <select class="form-control input-md" v-model="product.category_id" >
+                                    <option value="-">Choisissez une catégorie</option>
+                                    <option v-for="category in categories" :value="category.id">{{ category.label }}</option>
+                                </select>
                             </div>
                         </div>
 
@@ -75,12 +89,18 @@ export default {
         return {
             message: '',
             errors: '',
+            categories: null,
             product: {
                 label: '',
+                category_id: '-',
                 price: '',
                 description: '',
             },
         }
+    },
+
+    created() {
+        this.fetchCategories()
     },
 
     computed: {
@@ -89,8 +109,15 @@ export default {
 
     methods: {
 
-        createProduct() {
+        fetchCategories() {
+            axios.get(`/api/categories`).then(results => {
+                this.categories = results.data
+            }, error => {
+                console.error(error)
+            })
+        },
 
+        createProduct() {
             this.product.created_at = moment(this.product.created_at).format('YYYY-MM-DD')
 
             axios.post(`/api/product/new`, this.product).then(results => {

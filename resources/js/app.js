@@ -30,6 +30,7 @@ Vue.component('list-students', require('./components/student/list-students.vue')
 Vue.component('new-student', require('./components/student/new-student.vue').default);
 
 // PRODUCTS
+Vue.component('list-product-categories', require('./components/product/list-product-categories.vue').default);
 Vue.component('list-products', require('./components/product/list-products.vue').default);
 Vue.component('new-product', require('./components/product/new-product.vue').default);
 

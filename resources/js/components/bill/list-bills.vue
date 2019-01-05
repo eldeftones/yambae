@@ -7,7 +7,7 @@
                     {{ title }}
                     <a :href="'/student/'+studentId+'/new-bill'" class="btn btn-primary btn-title btn-md active" role="button" aria-pressed="true">
                         <span class="oi oi-plus"></span>
-                        Créer une nouvelle facture pour cet élève
+                        Nouvelle facture pour cet élève
                     </a>
                 </h1>
 
@@ -72,7 +72,6 @@ export default {
     methods: {
 
         fetchBills() {
-
             axios.get(`/api/student/${this.studentId}/bills`).then(results => {
                 this.bills = results.data
             }, error => {

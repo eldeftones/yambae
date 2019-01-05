@@ -50,7 +50,6 @@ export default {
     methods: {
 
         fetchTotals() {
-
             axios.get(`/api/bills/total`).then(results => {
                 this.results = results.data
             }, error => {

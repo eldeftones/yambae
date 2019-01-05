@@ -10,8 +10,11 @@
                     <div class="alert alert-success" role="alert">
                         <strong>Yeah !</strong> {{ message }}
                     </div>
-                    <a :href="'/student/'+studentId+'/new-bill'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Créer une nouvelle facture pour cet élève</a>
-                    <a href="/list-students" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Voir la liste des élèves</a>
+                    <a :href="'/student/'+studentId+'/new-bill'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+                        <span class="oi oi-plus"></span>
+                        Nouvelle facture pour cet élève
+                    </a>
+                    <a href="/list-students" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Liste des élèves</a>
                 </div>
 
                 <!-- NEW BILL FORM -->
@@ -113,7 +116,6 @@ export default {
     methods: {
 
         fetchProducts() {
-
             axios.get(`/api/products`).then(results => {
                 this.products = results.data
             }, error => {
@@ -126,7 +128,6 @@ export default {
         },
 
         createBill() {
-
             this.bill.created_at = moment(this.bill.created_at).format('YYYY-MM-DD')
 
             axios.post(`/api/bill/new`, this.bill).then(results => {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CreateNewProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 
 class ProductController extends Controller {
@@ -24,6 +25,12 @@ class ProductController extends Controller {
         $product->save();
 
         return response()->json(['message' => 'Nouveau produit créé !']);
+    }
+
+
+    public function listProductCategories()
+    {
+        return response()->json(Category::all());
     }
 
 }

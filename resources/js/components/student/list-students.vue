@@ -4,10 +4,10 @@
             <div class="col-md-8">
 
                 <h1>
-                    List des élèves
+                    Élèves
                     <a href="/new-student" class="btn btn-primary btn-title btn-md active" role="button" aria-pressed="true">
                         <span class="oi oi-plus"></span>
-                        Créer un(e) nouvel(le) élève
+                        Nouvel(le) élève
                     </a>
                 </h1>
 
@@ -97,7 +97,6 @@ export default {
     methods: {
 
         fetchStudents() {
-
             axios.get(`/api/students`).then(results => {
                 this.students = results.data
             }, error => {

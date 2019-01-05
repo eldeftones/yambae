@@ -26,4 +26,9 @@ class ProductController extends Controller
         return view('backend.product.new');
     }
 
+
+    public function listProductCategories()
+    {
+        return view('backend.product.list-categories');
+    }
 }

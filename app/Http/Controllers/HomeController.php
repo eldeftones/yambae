@@ -25,4 +25,11 @@ class HomeController extends Controller
     {
         return view('backend.home');
     }
+
+
+    public function test()
+    {
+        return "This is a test";
+    }
+
 }

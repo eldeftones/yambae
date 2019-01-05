@@ -10,6 +10,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test',                             'HomeController@test')->name('test');
+
 // AUTHENTICATION
 Auth::routes();
 
@@ -28,6 +30,7 @@ Route::get('/list-students',                    'Backoffice\\StudentController@l
 Route::get('/new-student',                      'Backoffice\\StudentController@newStudent')->name('new_student');
 
 // PRODUCTS
+Route::get('/list-product-categories',          'Backoffice\\ProductController@listProductCategories')->name('list_product_categories');
 Route::get('/list-products',                    'Backoffice\\ProductController@listProducts')->name('list_products');
 Route::get('/new-product',                      'Backoffice\\ProductController@newProduct')->name('new_product');
 
