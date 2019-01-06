@@ -24,6 +24,7 @@ window.Vue = require('vue');
 Vue.component('date-picker', require('vue2-datepicker').default);
 Vue.component('toggle-button', require('vue-js-toggle-button/src/Button.vue').default);
 Vue.component('moment', require('moment'));
+Vue.component('snotify', require('vue-snotify'));
 
 // STUDENTS
 Vue.component('list-students', require('./components/student/list-students.vue').default);
@@ -35,7 +36,7 @@ Vue.component('list-products', require('./components/product/list-products.vue')
 Vue.component('new-product', require('./components/product/new-product.vue').default);
 
 // BILLS
-Vue.component('new-bill', require('./components/bill/new-bill.vue').default);
+Vue.component('edit-bill', require('./components/bill/edit-bill.vue').default);
 Vue.component('list-bills', require('./components/bill/list-bills.vue').default);
 Vue.component('bills-total', require('./components/bill/bills-total.vue').default);
 

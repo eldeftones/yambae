@@ -38,3 +38,4 @@ Route::get('/new-product',                      'Backoffice\\ProductController@n
 Route::get('/student/{id}/list-bills',          'Backoffice\\BillController@listBills')->name('list_bills');
 Route::get('/student/{id}/new-bill',            'Backoffice\\BillController@newBill')->name('new_bill');
 Route::get('/bills/total',                      'Backoffice\\BillController@total')->name('total');
+Route::get('/bill/{id}/edit',                   'Backoffice\\BillController@editBill')->name('edit_bill');

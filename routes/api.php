@@ -27,6 +27,7 @@ Route::post('/product/new',                 'Api\\ProductController@createProduc
 Route::get('/categories',                   'Api\\ProductController@listProductCategories');
 
 // BILLS
+Route::get('/bill/{id}',                    'Api\\BillController@getBill');
 Route::get('/student/{id}/bills',           'Api\\BillController@getStudentBills');
-Route::post('/bill/new',                    'Api\\BillController@createBill');
+Route::post('/bill/save',                   'Api\\BillController@saveBill');
 Route::get('/bills/total',                  'Api\\BillController@getTotalBills');

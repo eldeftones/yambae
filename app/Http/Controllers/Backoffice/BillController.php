@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backoffice;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Bill;
 use App\Models\Student;
 
 class BillController extends Controller
@@ -36,9 +37,25 @@ class BillController extends Controller
             // TODO
         }
 
-        return view('backend.bill.new')
+        return view('backend.bill.edit')
             ->with([
                 'studentId' => $student->id,
+                'billId' => 'new',
+            ]);
+    }
+
+
+    public function editBill($billId)
+    {
+        $bill = Bill::find($billId);
+        if (!$bill) {
+            // TODO
+        }
+
+        return view('backend.bill.edit')
+            ->with([
+                'studentId' => $bill->student->id,
+                'billId' => $billId,
             ]);
     }
 

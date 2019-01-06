@@ -25,6 +25,7 @@
                             <th scope="col">Prix</th>
                             <th scope="col">Commentaire</th>
                             <th scope="col">Date</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +35,12 @@
                             <td>{{ bill.price }}</td>
                             <td>{{ bill.comment }}</td>
                             <td>{{ bill.created_at }}</td>
+                            <td>
+                                <a :href="'/bill/'+bill.id+'/edit'" class="btn btn-success btn-sm active" role="button" aria-pressed="true">
+                                    <span class="oi oi-pencil"></span>
+                                    Éditer
+                                </a>
+                            </td>
                         </tr>
                   </tbody>
                 </table>

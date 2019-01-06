@@ -38,11 +38,12 @@ class Bill extends Model
             'id' => $this->id,
             'product_id' => $this->product_id,
             'product_label' => $this->product->label,
+            'student_id' => $this->student_id,
             'student' => $this->student->toJson(),
             'price' => $this->price,
             'refunded' => $this->refunded,
             'comment' => $this->comment,
-            'created_at' => $this->created_at->format('d-m-Y'),
+            'created_at' => $this->created_at->format('Y-m-d'),
         ];
     }
 }

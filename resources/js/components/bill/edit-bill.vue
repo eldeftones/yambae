@@ -1,9 +1,12 @@
 <template>
-    <div class="new-bill">
+    <div class="edit-bill">
+
+        <vue-snotify></vue-snotify>
+
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <h1>Nouvelle facture</h1>
+                <h1>{{ title }}</h1>
 
                 <!-- MESSAGES -->
                 <div v-if="message">
@@ -14,12 +17,15 @@
                         <span class="oi oi-plus"></span>
                         Nouvelle facture pour cet élève
                     </a>
-                    <a href="/list-students" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Liste des élèves</a>
+                    <a :href="'/student/'+studentId+'/list-bills'"  class="btn btn-success btn-lg active" role="button" aria-pressed="true">
+                        <span class="oi oi-list"></span>
+                        Liste des factures de cet élève
+                    </a>
                 </div>
 
-                <!-- NEW BILL FORM -->
+                <!-- NEW/EDIT BILL FORM -->
                 <div v-else class="card card-default">
-                    <div class="card-header">Nouvelle facture</div>
+                    <div class="card-header">{{ title }}</div>
 
                     <div class="card-body">
 
@@ -69,7 +75,7 @@
                         <!-- SAVE BUTTON -->
                         <div class="form-group row">
                             <div class="col-md-10">
-                                <button type="button" class="btn btn-success" @click="createBill">Créer</button>
+                                <button type="button" class="btn btn-success" @click="saveBill">Sauvegarder</button>
                             </div>
                         </div>
 
@@ -77,7 +83,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </template>
 
@@ -87,6 +92,7 @@ import moment from 'moment'
 export default {
     props: [
         'studentId',
+        'billId',
     ],
 
     data() {
@@ -95,6 +101,7 @@ export default {
             errors: '',
             products: null,
             bill: {
+                id: this.billId,
                 student_id: this.studentId,
                 product_id: '',
                 comment: '',
@@ -107,13 +114,28 @@ export default {
 
     created() {
         this.fetchProducts()
+        if (this.bill.id !== 'new') {
+            this.fetchBill()
+        }
     },
 
     computed: {
 
+        title() {
+            return this.bill.id == 'new' ? 'Nouvelle facture' : 'Modification d\'une facture'
+        },
+
     },
 
     methods: {
+
+        fetchBill() {
+            axios.get(`/api/bill/${this.bill.id}`).then(results => {
+                this.bill = results.data
+            }, error => {
+                console.error(error)
+            })
+        },
 
         fetchProducts() {
             axios.get(`/api/products`).then(results => {
@@ -127,13 +149,20 @@ export default {
             this.bill.price = _.find(this.products, {'id': this.bill.product_id}).price
         },
 
-        createBill() {
+        saveBill() {
             this.bill.created_at = moment(this.bill.created_at).format('YYYY-MM-DD')
 
-            axios.post(`/api/bill/new`, this.bill).then(results => {
+            axios.post(`/api/bill/save`, this.bill).then(results => {
                 this.message = results.data.message
+                // TODO
+                // this.$snotify.success(this.message, {
+                //   timeout: 2000,
+                //   showProgressBar: false,
+                //   closeOnClick: false,
+                //   pauseOnHover: true
+                // });
             }, error => {
-                this.errors = results.data.message
+                this.errors = error.response.data.errors
             })
         },
 
@@ -143,7 +172,7 @@ export default {
 </script>
 
 <style lang="scss">
-.new-bill {
+.edit-bill {
     h1 {
         margin: 30px 0 50px 0;
     }

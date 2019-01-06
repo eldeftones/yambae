@@ -18,6 +18,17 @@ class BillController extends Controller {
     }
 
 
+    public function getBill($billId)
+    {
+        $bill = Bill::find($billId);
+        if (!$bill) {
+            return response()->json(['message' => 'Facture inconnue'], 404);
+        }
+
+        return response()->json($bill->toJson());
+    }
+
+
     public function getStudentBills($studentId)
     {
         $student = Student::find($studentId);
@@ -29,13 +40,21 @@ class BillController extends Controller {
     }
 
 
-    public function createBill(CreateNewBillRequest $request)
+    public function saveBill(CreateNewBillRequest $request)
     {
-        $bill = new Bill;
-        $bill->fromJson(request()->all());
+        if ($request->id === 'new') {
+            $bill = new Bill;
+        } else {
+            $bill = Bill::find($request->id);
+            if (!$bill) {
+                return response()->json(['message' => 'Facture inconnue'], 404);
+            }
+        }
+
+        $bill->fromJson($request->all());
         $bill->save();
 
-        return response()->json(['message' => 'Nouvelle facture créée avec succès !']);
+        return response()->json(['message' => 'Facture enregistrée avec succès !']);
     }
 
 
