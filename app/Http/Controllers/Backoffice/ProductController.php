@@ -31,4 +31,10 @@ class ProductController extends Controller
     {
         return view('backend.product.list-categories');
     }
+
+
+    public function newSession()
+    {
+        return view('backend.product.new-session');
+    }
 }

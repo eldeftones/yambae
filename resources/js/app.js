@@ -34,6 +34,7 @@ Vue.component('new-student', require('./components/student/new-student.vue').def
 Vue.component('list-product-categories', require('./components/product/list-product-categories.vue').default);
 Vue.component('list-products', require('./components/product/list-products.vue').default);
 Vue.component('new-product', require('./components/product/new-product.vue').default);
+Vue.component('new-session', require('./components/product/new-session.vue').default);
 
 // BILLS
 Vue.component('edit-bill', require('./components/bill/edit-bill.vue').default);

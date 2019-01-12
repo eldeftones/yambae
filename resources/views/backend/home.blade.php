@@ -15,6 +15,7 @@
                     <a href="/list-products" class="btn btn-success btn-md active" role="button" aria-pressed="true">Liste des produits</a>
                     <a href="/new-product" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Nouveau produit</a>
                     <a href="/list-product-categories" class="btn btn-warning btn-md active" role="button" aria-pressed="true">Liste des catégories</a>
+                    {{-- <a href="/new-session" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Nouvelle session</a> --}}
                 </div>
             </div>
 

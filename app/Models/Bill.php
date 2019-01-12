@@ -21,9 +21,23 @@ class Bill extends Model
     }
 
 
+    public function session()
+    {
+        return $this->hasOne('App\Models\Session', 'id', 'session_id');
+    }
+
+
+    public function level()
+    {
+        return $this->hasOne('App\Models\Level', 'id', 'level_id');
+    }
+
+
     public function fromJson($data, $asObject = false)
     {
         $this->product_id = $data['product_id'];
+        $this->level_id = $data['level_id'];
+        $this->session_id = $data['session_id'];
         $this->student_id = $data['student_id'];
         $this->price = $data['price'];
         $this->refunded = $data['refunded'];
@@ -37,13 +51,18 @@ class Bill extends Model
         return [
             'id' => $this->id,
             'product_id' => $this->product_id,
-            'product_label' => $this->product->label,
+            'session_id' => $this->session_id,
+            'level_id' => $this->level_id,
             'student_id' => $this->student_id,
-            'student' => $this->student->toJson(),
             'price' => $this->price,
             'refunded' => $this->refunded,
             'comment' => $this->comment,
             'created_at' => $this->created_at->format('Y-m-d'),
+
+            'student' => $this->student->toJson(),
+            'product_label' => $this->product->label,
+            'session_label' => optional($this->session)->label,
+            'level_label' => optional($this->level)->label,
         ];
     }
 }

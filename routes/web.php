@@ -33,6 +33,7 @@ Route::get('/new-student',                      'Backoffice\\StudentController@n
 Route::get('/list-product-categories',          'Backoffice\\ProductController@listProductCategories')->name('list_product_categories');
 Route::get('/list-products',                    'Backoffice\\ProductController@listProducts')->name('list_products');
 Route::get('/new-product',                      'Backoffice\\ProductController@newProduct')->name('new_product');
+Route::get('/new-session',                      'Backoffice\\ProductController@newSession')->name('new_session');
 
 // BILLS
 Route::get('/student/{id}/list-bills',          'Backoffice\\BillController@listBills')->name('list_bills');

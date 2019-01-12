@@ -22,6 +22,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Label produit</th>
+                            <th scope="col">Session</th>
+                            <th scope="col">Niveau</th>
                             <th scope="col">Prix</th>
                             <th scope="col">Commentaire</th>
                             <th scope="col">Date</th>
@@ -32,6 +34,8 @@
                         <tr v-for="bill in bills">
                             <th scope="row">{{ bill.id }}</th>
                             <td>{{ bill.product_label }}</td>
+                            <td>{{ bill.session_label }}</td>
+                            <td>{{ bill.level_label }}</td>
                             <td>{{ bill.price }}</td>
                             <td>{{ bill.comment }}</td>
                             <td>{{ bill.created_at }}</td>

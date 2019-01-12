@@ -23,6 +23,8 @@ Route::post('/student/new',                 'Api\\StudentController@createStuden
 
 // PRODUCTS
 Route::get('/products',                     'Api\\ProductController@getProducts');
+Route::get('/levels',                       'Api\\ProductController@getLevels');
+Route::get('/sessions',                     'Api\\ProductController@getSessions');
 Route::post('/product/new',                 'Api\\ProductController@createProduct');
 Route::get('/categories',                   'Api\\ProductController@listProductCategories');
 

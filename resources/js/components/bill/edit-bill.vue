@@ -31,7 +31,7 @@
 
                         <!-- PRODUCT TYPE -->
                         <div class="form-group row">
-                            <label class="col-md-2 control-label">Produit</label>
+                            <label class="col-md-2 control-label">Produit*</label>
                             <div class="col-md-4">
                                 <select class="form-control input-md" v-model="bill.product_id" @change="updatePrice">
                                     <option v-for="product in products" :value="product.id">{{ product.label + ' (' + product.price + '$)' }}</option>
@@ -39,9 +39,29 @@
                             </div>
                         </div>
 
+                        <!-- LEVEL-->
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label">Niveau</label>
+                            <div class="col-md-4">
+                                <select class="form-control input-md" v-model="bill.level_id" >
+                                    <option v-for="level in levels" :value="level.id">{{ level.label }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- SESSION-->
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label">Session</label>
+                            <div class="col-md-4">
+                                <select class="form-control input-md" v-model="bill.session_id" >
+                                    <option v-for="session in sessions" :value="session.id">{{ session.label }}</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <!-- PRICE -->
                         <div class="form-group row">
-                            <label class="col-md-2 control-label" for="price">Prix</label>
+                            <label class="col-md-2 control-label" for="price">Prix*</label>
                             <div class="col-md-2">
                                 <div class="input-group">
                                     <input type="text" class="form-control" v-model="bill.price" id="price" />
@@ -62,7 +82,7 @@
 
                         <!-- ENTRY DATE -->
                         <div class="form-group row">
-                            <label class="col-md-2 control-label">Date</label>
+                            <label class="col-md-2 control-label">Date*</label>
                             <div class="col-md-10">
                                  <date-picker
                                     v-model="bill.created_at"
@@ -100,10 +120,14 @@ export default {
             message: '',
             errors: '',
             products: null,
+            levels: null,
+            sessions: null,
             bill: {
                 id: this.billId,
                 student_id: this.studentId,
                 product_id: '',
+                level_id: '',
+                session_id: '',
                 comment: '',
                 price: '',
                 refunded: false,
@@ -114,6 +138,8 @@ export default {
 
     created() {
         this.fetchProducts()
+        this.fetchLevels()
+        this.fetchSessions()
         if (this.bill.id !== 'new') {
             this.fetchBill()
         }
@@ -140,6 +166,22 @@ export default {
         fetchProducts() {
             axios.get(`/api/products`).then(results => {
                 this.products = results.data
+            }, error => {
+                console.error(error)
+            })
+        },
+
+        fetchLevels() {
+            axios.get(`/api/levels`).then(results => {
+                this.levels = results.data
+            }, error => {
+                console.error(error)
+            })
+        },
+
+        fetchSessions() {
+            axios.get(`/api/sessions`).then(results => {
+                this.sessions = results.data
             }, error => {
                 console.error(error)
             })
