@@ -7,7 +7,7 @@
                     Élèves
                     <a href="/new-student" class="btn btn-primary btn-title btn-md active" role="button" aria-pressed="true">
                         <span class="oi oi-plus"></span>
-                        Nouvel(le) élève
+                        Nouvel élève
                     </a>
                 </h1>
 
@@ -39,6 +39,8 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Prénom</th>
                                 <th scope="col">Nom</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Tel</th>
                                 <th scope="col">Date d'entrée</th>
                                 <th scope="col">Actions</th>
                             </tr>
@@ -48,10 +50,18 @@
                                 <th scope="row">{{ student.id }}</th>
                                 <td>{{ student.firstname }}</td>
                                 <td>{{ student.lastname }}</td>
+                                <td>{{ student.email }}</td>
+                                <td>{{ student.phone }}</td>
                                 <td>{{ student.created_at }}</td>
                                 <td>
-                                    <a :href="'/student/'+student.id+'/list-bills'" class="btn btn-success btn-sm active" role="button" aria-pressed="true">Liste des factures</a>
-                                    <a :href="'/student/'+student.id+'/new-bill'" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Ajouter une facture</a>
+                                    <a :href="'/student/'+student.id+'/list-bills'" class="btn btn-success btn-sm active" role="button" aria-pressed="true">
+                                        <span class="oi oi-list"></span>
+                                        Liste des factures
+                                    </a>
+                                    <a :href="'/student/'+student.id+'/new-bill'" class="btn btn-warning btn-sm active" role="button" aria-pressed="true">
+                                        <span class="oi oi-plus"></span>
+                                        Ajouter une facture
+                                    </a>
                                 </td>
                             </tr>
                       </tbody>

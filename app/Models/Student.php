@@ -20,6 +20,8 @@ class Student extends Model
          $this->gender = $data['gender'];
          $this->firstname = $data['firstname'];
          $this->lastname = $data['lastname'];
+         $this->email = $data['email'];
+         $this->phone = $data['phone'];
          $this->created_at = $data['created_at'];
      }
 
@@ -31,8 +33,11 @@ class Student extends Model
              'gender' => $this->gender,
              'firstname' => $this->firstname,
              'lastname' => $this->lastname,
-             'fullname' => $this->firstname.' '.$this->lastname,
+             'email' => $this->email,
+             'phone' => $this->phone,
              'created_at' => $this->created_at->format('d-m-Y'),
+
+             'fullname' => $this->firstname.' '.$this->lastname,
          ];
      }
 

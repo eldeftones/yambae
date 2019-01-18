@@ -12,9 +12,18 @@
                 </div>
 
                 <div class="card-body">
-                    <a href="/list-products" class="btn btn-success btn-md active" role="button" aria-pressed="true">Liste des produits</a>
-                    <a href="/new-product" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Nouveau produit</a>
-                    <a href="/list-product-categories" class="btn btn-warning btn-md active" role="button" aria-pressed="true">Liste des catégories</a>
+                    <a href="/list-products" class="btn btn-success btn-md active" role="button" aria-pressed="true">
+                        <span class="oi oi-list"></span>
+                        Liste des produits
+                    </a>
+                    <a href="/new-product" class="btn btn-primary btn-md active" role="button" aria-pressed="true">
+                        <span class="oi oi-plus"></span>
+                        Nouveau produit
+                    </a>
+                    <a href="/list-product-categories" class="btn btn-light btn-md active" role="button" aria-pressed="true">
+                        <span class="oi oi-list"></span>
+                        Liste des catégories
+                    </a>
                     {{-- <a href="/new-session" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Nouvelle session</a> --}}
                 </div>
             </div>
@@ -28,8 +37,14 @@
                 </div>
 
                 <div class="card-body">
-                    <a href="/list-students" class="btn btn-success btn-md active" role="button" aria-pressed="true">Liste des élèves</a>
-                    <a href="/new-student" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Nouvel(le) élève</a>
+                    <a href="/list-students" class="btn btn-success btn-md active" role="button" aria-pressed="true">
+                        <span class="oi oi-list"></span>
+                        Liste des élèves
+                    </a>
+                    <a href="/new-student" class="btn btn-primary btn-md active" role="button" aria-pressed="true">
+                        <span class="oi oi-plus"></span>
+                        Nouvel élève
+                    </a>
                 </div>
             </div>
 

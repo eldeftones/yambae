@@ -14,7 +14,10 @@
                         <span class="oi oi-plus"></span>
                         Nouveau produit
                     </a>
-                    <a href="/list-products" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Liste des produits</a>
+                    <a href="/list-products" class="btn btn-success btn-lg active" role="button" aria-pressed="true">
+                        <span class="oi oi-list"></span>
+                        Liste des produits
+                    </a>
                 </div>
 
                 <!-- NEW PRODUCT FORM -->

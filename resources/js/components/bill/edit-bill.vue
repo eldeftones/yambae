@@ -13,7 +13,7 @@
                     <div class="alert alert-success" role="alert">
                         <strong>Yeah !</strong> {{ message }}
                     </div>
-                    <a :href="'/student/'+studentId+'/new-bill'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+                    <a :href="'/student/'+studentId+'/new-bill'" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">
                         <span class="oi oi-plus"></span>
                         Nouvelle facture pour cet élève
                     </a>

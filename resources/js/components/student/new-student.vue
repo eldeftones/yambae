@@ -3,23 +3,30 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <h1>Nouvel(le) élève</h1>
+                <h1>Nouvel élève</h1>
 
                 <!-- MESSAGES -->
                 <div v-if="message">
                     <div class="alert alert-success" role="alert">
                         <strong>Yeah !</strong> {{ message }}
                     </div>
+                    <a :href="'/student/'+studentId+'/new-bill'" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">
+                        <span class="oi oi-plus"></span>
+                        Ajouter une facture
+                    </a>
                     <a href="/new-student" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
                         <span class="oi oi-plus"></span>
-                        Nouvel(le) élève
+                        Nouvel élève
                     </a>
-                    <a href="/list-students" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Liste des élèves</a>
+                    <a href="/list-students" class="btn btn-success btn-lg active" role="button" aria-pressed="true">
+                        <span class="oi oi-list"></span>
+                        Liste des élèves
+                    </a>
                 </div>
 
                 <!-- NEW STUDENT FORM -->
                 <div v-else class="card card-default">
-                    <div class="card-header">Nouvel(le) élève</div>
+                    <div class="card-header">Nouvel élève</div>
 
                     <div class="card-body">
 
@@ -50,15 +57,19 @@
                             </div>
                         </div>
 
-                        <!-- ENTRY DATE -->
+                        <!-- EMAIL -->
                         <div class="form-group row">
-                            <label class="col-md-2 control-label">Date d'entrée</label>
+                            <label class="col-md-2 control-label" for="email">Email</label>
                             <div class="col-md-10">
-                                 <date-picker
-                                    v-model="student.created_at"
-                                    lang="fr"
-                                    type="date"
-                                />
+                                <input type="text" class="form-control" v-model="student.email" id="email" />
+                            </div>
+                        </div>
+
+                        <!-- PHONE NUMBER -->
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label" for="phone">Téléphone</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" v-model="student.phone" id="phone" />
                             </div>
                         </div>
 
@@ -88,11 +99,13 @@ export default {
         return {
             message: '',
             errors: '',
+            studentId: null,
             student: {
                 gender: 'male',
                 firstname: '',
                 lastname: '',
-                created_at: new Date(),
+                email: '',
+                phone: '',
             },
         }
     },
@@ -108,6 +121,7 @@ export default {
 
             axios.post(`/api/student/new`, this.student).then(results => {
                 this.message = results.data.message
+                this.studentId = results.data.studentId
             }, error => {
                 this.errors = results.data.message
             })

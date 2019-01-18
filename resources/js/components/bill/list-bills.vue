@@ -5,7 +5,7 @@
 
                 <h1>
                     {{ title }}
-                    <a :href="'/student/'+studentId+'/new-bill'" class="btn btn-primary btn-title btn-md active" role="button" aria-pressed="true">
+                    <a :href="'/student/'+studentId+'/new-bill'" class="btn btn-warning btn-title btn-md active" role="button" aria-pressed="true">
                         <span class="oi oi-plus"></span>
                         Nouvelle facture pour cet élève
                     </a>

@@ -23,7 +23,10 @@ class StudentController extends Controller {
         $student->fromJson(request()->all());
         $student->save();
 
-        return response()->json(['message' => 'Nouvel(le) élève créé(e) !']);
+        return response()->json([
+            'message' => 'Nouvel élève créé !',
+            'studentId' => $student->id,
+        ]);
     }
 
 }
