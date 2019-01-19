@@ -9,6 +9,7 @@ class Product extends Model
     protected $table = 'products';
     public $timestamps = false;
 
+    const ID_SESSION_COLOMBIAN_SALSA = 1;
 
     public function category()
     {

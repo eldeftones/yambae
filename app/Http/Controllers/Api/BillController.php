@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CreateNewBillRequest;
 use App\Models\Bill;
+use App\Models\Product;
 use App\Models\Student;
 
 class BillController extends Controller {
@@ -60,12 +61,29 @@ class BillController extends Controller {
 
     public function getTotalBills()
     {
+        $request = request();
+        $sessionId = $request->session_id;
+        $productId = $request->product_id;
+        $levelId = $request->level_id;
+
         $totals = Bill::query()
             ->addSelect([
                 'p.label AS product_label',
                 \DB::raw("SUM(bills.price) AS total"),
             ])
             ->join('products AS p', 'p.id', 'bills.product_id')
+            ->when($productId, function ($q) use ($productId) {
+                $q
+                    ->where('bills.product_id', $productId);
+            })
+            ->when($sessionId, function ($q) use ($sessionId) {
+                $q
+                    ->where('bills.session_id', $sessionId);
+            })
+            ->when($levelId, function ($q) use ($levelId) {
+                $q
+                    ->where('bills.level_id', $levelId);
+            })
             ->groupBy('p.id')
             ->get();
 

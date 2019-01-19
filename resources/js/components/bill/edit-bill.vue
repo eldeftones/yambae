@@ -34,7 +34,7 @@
                             <label class="col-md-2 control-label">Produit*</label>
                             <div class="col-md-4">
                                 <select class="form-control input-md" v-model="bill.product_id" @change="updatePrice">
-                                    <option v-for="product in products" :value="product.id">{{ product.label + ' (' + product.price + '$)' }}</option>
+                                    <option v-for="product in products" :value="product.id">{{ product.label }}</option>
                                 </select>
                             </div>
                         </div>

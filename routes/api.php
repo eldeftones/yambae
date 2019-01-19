@@ -32,4 +32,4 @@ Route::get('/categories',                   'Api\\ProductController@listProductC
 Route::get('/bill/{id}',                    'Api\\BillController@getBill');
 Route::get('/student/{id}/bills',           'Api\\BillController@getStudentBills');
 Route::post('/bill/save',                   'Api\\BillController@saveBill');
-Route::get('/bills/total',                  'Api\\BillController@getTotalBills');
+Route::post('/bills/total',                 'Api\\BillController@getTotalBills');
