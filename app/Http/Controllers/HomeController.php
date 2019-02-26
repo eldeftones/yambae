@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bill;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,7 +31,12 @@ class HomeController extends Controller
 
     public function test()
     {
-        return "This is a test";
+        //return view('backend.player.audio-player');
+
+        $bill = Bill::find(29);
+        echo (new \App\Mail\BillCreated($bill))->render();
+
+
     }
 
 }

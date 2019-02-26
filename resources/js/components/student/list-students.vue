@@ -56,11 +56,11 @@
                                 <td>
                                     <a :href="'/student/'+student.id+'/list-bills'" class="btn btn-success btn-sm active" role="button" aria-pressed="true">
                                         <span class="oi oi-list"></span>
-                                        Liste des factures
+                                        Factures
                                     </a>
                                     <a :href="'/student/'+student.id+'/new-bill'" class="btn btn-warning btn-sm active" role="button" aria-pressed="true">
                                         <span class="oi oi-plus"></span>
-                                        Ajouter une facture
+                                        Facture
                                     </a>
                                 </td>
                             </tr>

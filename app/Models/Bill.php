@@ -8,6 +8,7 @@ class Bill extends Model
 {
     protected $table = 'bills';
 
+    public const TAXES_AMOUNT = 0.15;
 
     public function product()
     {
@@ -30,6 +31,18 @@ class Bill extends Model
     public function level()
     {
         return $this->hasOne('App\Models\Level', 'id', 'level_id');
+    }
+
+
+    public function getPriceHT()
+    {
+        return round($this->price / (1 + self::TAXES_AMOUNT), 2);
+    }
+
+
+    public function getTaxesAmount()
+    {
+        return round($this->price - $this->getPriceHT(), 2);
     }
 
 

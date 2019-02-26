@@ -41,6 +41,9 @@ Vue.component('edit-bill', require('./components/bill/edit-bill.vue').default);
 Vue.component('list-bills', require('./components/bill/list-bills.vue').default);
 Vue.component('bills-total', require('./components/bill/bills-total.vue').default);
 
+// PLAYER
+Vue.component('audio-player', require('./components/player/audio-player.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -55,6 +55,15 @@ class BillController extends Controller {
         $bill->fromJson($request->all());
         $bill->save();
 
+        // Send bill to the customer
+        $to = $bill->student->email;
+        if ($to) {
+            \Mail::to($to)->send(new \App\Mail\BillCreated($bill));
+            // Save a copy of the email sent
+            $bill->email_copy = json_encode((new \App\Mail\BillCreated($bill))->render());
+            $bill->save();
+        }
+
         return response()->json(['message' => 'Facture enregistrée avec succès !']);
     }
 
