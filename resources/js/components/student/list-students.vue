@@ -1,7 +1,7 @@
 <template>
     <div class="list-students">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10 col-lg-8">
 
                 <h1>
                     Élèves
@@ -98,7 +98,9 @@ export default {
 
             return _.filter(this.students, function(s) {
                 return s.fullname.toLowerCase().includes(research)
-                    || s.lastname.concat(" "+s.firstname).toLowerCase().includes(research)
+                    || (s.lastname ? s.lastname : '').concat(" "+s.firstname).toLowerCase().includes(research)
+                    || (s.email ? s.email : '').includes(research)
+                    || (s.phone ? s.phone : '').includes(research)
             })
         },
 
@@ -122,7 +124,7 @@ export default {
 <style lang="scss">
 .list-students {
     h1 {
-        margin: 30px 0 50px 0;
+        margin: 0px 0 10px 0;
     }
 
     .btn-title {
@@ -130,7 +132,7 @@ export default {
     }
 
     .research {
-        margin-bottom: 60px;
+        margin-bottom: 30px;
     }
 }
 </style>

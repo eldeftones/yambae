@@ -1,7 +1,7 @@
 <template>
     <div class="new-student">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10 col-lg-8">
 
                 <h1>Nouvel élève</h1>
 
@@ -135,7 +135,7 @@ export default {
 <style lang="scss">
 .new-student {
     h1 {
-        margin: 30px 0 50px 0;
+        margin: 0px 0 10px 0;
     }
 }
 </style>

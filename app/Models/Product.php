@@ -11,9 +11,16 @@ class Product extends Model
 
     const ID_SESSION_COLOMBIAN_SALSA = 1;
 
+
     public function category()
     {
         return $this->hasOne('App\Models\Category', 'id', 'category_id');
+    }
+
+
+    public function isSessionSalsa()
+    {
+        return $this->id === self::ID_SESSION_COLOMBIAN_SALSA;
     }
 
 

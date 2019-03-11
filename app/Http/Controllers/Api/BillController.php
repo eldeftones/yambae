@@ -58,9 +58,10 @@ class BillController extends Controller {
         // Send bill to the customer
         $to = $bill->student->email;
         if ($to) {
-            \Mail::to($to)->send(new \App\Mail\BillCreated($bill));
+            $mail = new \App\Mail\BillCreated($bill);
+            \Mail::to($to)->send($mail);
             // Save a copy of the email sent
-            $bill->email_copy = json_encode((new \App\Mail\BillCreated($bill))->render());
+            $bill->email_copy = json_encode($mail->render());
             $bill->save();
         }
 

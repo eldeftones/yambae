@@ -4,7 +4,7 @@
         <vue-snotify></vue-snotify>
 
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10 col-lg-8">
 
                 <h1>{{ title }}</h1>
 
@@ -216,7 +216,7 @@ export default {
 <style lang="scss">
 .edit-bill {
     h1 {
-        margin: 30px 0 50px 0;
+        margin: 0px 0 10px 0;
     }
 }
 </style>
